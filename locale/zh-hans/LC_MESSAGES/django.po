@@ -906,33 +906,21 @@ msgid "1.配置修改"
 msgstr "1.配置修改"
 
 #: home_application/templates/home_application/dev_guide.html:38
-msgid ""
-"（1）config/__init__.py 文件：APP_CODE \\ SECRET_KEY （对应 蓝鲸智云开发者中"
-"心 -&gt; 点击应用ID -&gt; 基本信息 中的应用ID和应用TOKEN）"
-msgstr ""
-
-#: home_application/templates/home_application/dev_guide.html:39
-msgid ""
-"（2）config/__init__.py 文件：BK_URL（蓝鲸智云开发者中心的域名，形如：http://"
-"paas.bking.com）"
-msgstr ""
+msgid "（1）根据【开发者中心-文档与支持-新手入门】相关文档配置开发环境"
+msgstr "（1）根据【开发者中心-文档与支持-新手入门】相关文档配置开发环境"
 
 #: home_application/templates/home_application/dev_guide.html:40
 msgid ""
-"（3）config/dev.py 文件：DATABASES（请创建本地开发数据库，并修改配置信息）"
-msgstr ""
+"（2）config/dev.py 文件：DATABASES（请创建本地开发数据库，并修改配置信息）"
+msgstr "（2）config/dev.py 文件：DATABASES（请创建本地开发数据库，并修改配置信息）"
 
 #: home_application/templates/home_application/dev_guide.html:41
-msgid "（4）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）"
-msgstr "（4）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）"
+msgid "（3）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）"
+msgstr "（3）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）"
 
 #: home_application/templates/home_application/dev_guide.html:42
-msgid "（5）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）"
-msgstr "（5）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）"
-
-#: home_application/templates/home_application/dev_guide.html:43
-msgid "注意：测试环境 和 正式环境 的数据库需要对 AppServer 授权"
-msgstr "注意：测试环境 和 正式环境 的数据库需要对 AppServer 授权"
+msgid "（4）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）"
+msgstr "（4）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）"
 
 #: home_application/templates/home_application/dev_guide.html:44
 msgid "2.celery 配置"

@@ -12,6 +12,10 @@ specific language governing permissions and limitations under the License.
 """
 from config import RUN_VER
 from config.default import FRONTEND_BACKEND_SEPARATION
+from blueapps.conf.validators import EnvValidator
+
+
+EnvValidator(RUN_VER).validate()
 
 if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
@@ -35,7 +39,7 @@ STATIC_URL = "/static/"
 # Celery 消息队列设置 RabbitMQ
 # BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 # Celery 消息队列设置 Redis
-BROKER_URL = "redis://mysql.deny.pub.local:6379/0"
+BROKER_URL = "redis://localhost:6379/0"
 
 DEBUG = True
 
@@ -47,8 +51,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": APP_CODE,  # noqa
         "USER": "root",
-        "PASSWORD": "your_mysql_password",
-        "HOST": "mysql.deny.pub.local",
+        "PASSWORD": "",
+        "HOST": "localhost",
         "PORT": "3306",
     },
 }

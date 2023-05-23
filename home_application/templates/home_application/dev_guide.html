@@ -35,12 +35,10 @@
 	            <h4>{% trans "开发项目" %}</h4>
 	            <div class="mt10 mb20 wm lh2">
 					<strong>{% trans "1.配置修改" %}</strong><br>
-					{% trans "（1）config/__init__.py 文件：APP_CODE \ SECRET_KEY （对应 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 中的应用ID和应用TOKEN）" %}<br>
-					{% trans "（2）config/__init__.py 文件：BK_URL（蓝鲸智云开发者中心的域名，形如：http://paas.bking.com）" %}<br>
-					{% trans "（3）config/dev.py 文件：DATABASES（请创建本地开发数据库，并修改配置信息）" %}<br>
-					{% trans "（4）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）" %}<br>
-					{% trans "（5）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）" %}<br>
-					<p class="text-notice">{% trans "注意：测试环境 和 正式环境 的数据库需要对 AppServer 授权" %}</p>
+                    {% trans "（1）根据【开发者中心-文档与支持-新手入门】相关文档配置开发环境" %}<br>
+					{% trans "（2）config/dev.py 文件：DATABASES（请创建本地开发数据库，并修改配置信息）" %}<br>
+					{% trans "（3）config/stag.py 文件：DATABASES（请创建测试数据库，并修改配置信息）" %}<br>
+					{% trans "（4）config/prod.py 文件：DATABASES（请创建正式数据库，并修改配置信息）" %}<br>
 					<strong>{% trans "2.celery 配置" %}</strong><br>
 					{% trans "若需要使用 celery，请修改以下配置：（" %}<a href="https://docs.bk.tencent.com/blueapps/USAGE.html#25-%E5%AE%89%E8%A3%85-celery%EF%BC%88%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E5%90%8E%E5%8F%B0%E4%BB%BB%E5%8A%A1%E7%9A%84%E9%A1%B9%E7%9B%AE%EF%BC%89" target="_blank">{% trans "celery 开发指引" %}</a>）<br>
 					{% trans "（1）config/default.py 文件：IS_USE_CELERY 的值设置为: " %}<span class="text-notice">True</span><br>

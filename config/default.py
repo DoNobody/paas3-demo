@@ -35,35 +35,40 @@ from blueapps.conf.log import get_logging_config_dict
 INSTALLED_APPS += (  # noqa
     "home_application",
     "mako_application",
+    'blueapps_example.app_control',
+    'blueapps_example.test_component',
+    'blueapps_example.test_celery',
+    'blueapps_example.test_app_tags',
 )
 
 # 这里是默认的中间件，大部分情况下，不需要改动
 # 如果你已经了解每个默认 MIDDLEWARE 的作用，确实需要去掉某些 MIDDLEWARE，或者改动先后顺序，请去掉下面的注释，然后修改
-MIDDLEWARE = (
-    # request instance provider
-    'blueapps.middleware.request_provider.RequestProvider',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    # 跨域检测中间件， 默认关闭
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    # 蓝鲸静态资源服务
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    # Auth middleware
-    'blueapps.account.middlewares.RioLoginRequiredMiddleware',
-    'blueapps.account.middlewares.WeixinLoginRequiredMiddleware',
-    # 'blueapps.account.middlewares.LoginRequiredMiddleware',
-    # exception middleware
-    'blueapps.core.exceptions.middleware.AppExceptionMiddleware',
-    # django国际化中间件
-    'django.middleware.locale.LocaleMiddleware',
-)
+# MIDDLEWARE = (
+#     # request instance provider
+#     'blueapps.middleware.request_provider.RequestProvider',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     # 跨域检测中间件， 默认关闭
+#     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+#     # 蓝鲸静态资源服务
+#     'whitenoise.middleware.WhiteNoiseMiddleware',
+#     # Auth middleware
+#     'blueapps.account.middlewares.RioLoginRequiredMiddleware',
+#     'blueapps.account.middlewares.WeixinLoginRequiredMiddleware',
+#     'blueapps.account.middlewares.LoginRequiredMiddleware',
+#     # exception middleware
+#     'blueapps.core.exceptions.middleware.AppExceptionMiddleware',
+#     # django国际化中间件
+#     'django.middleware.locale.LocaleMiddleware',
+# )
 
 # 自定义中间件
-MIDDLEWARE += ()  # noqa
+MIDDLEWARE += (
+)  # noqa
 
 # 默认数据库AUTO字段类型
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
@@ -86,7 +91,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # noqa
 # worker: python manage.py celery worker -l info
 # beat: python manage.py celery beat -l info
 # 不使用时，请修改为 False，并删除项目目录下的 Procfile 文件中 celery 配置
-IS_USE_CELERY = False
+IS_USE_CELERY = True
 
 # 前后端分离开发配置开关，设置为True时dev和stag环境会自动加载允许跨域的相关选项
 FRONTEND_BACKEND_SEPARATION = False
@@ -95,7 +100,9 @@ FRONTEND_BACKEND_SEPARATION = False
 CELERYD_CONCURRENCY = os.getenv("BK_CELERYD_CONCURRENCY", 2)  # noqa
 
 # CELERY 配置，申明任务的文件路径，即包含有 @task 装饰器的函数文件
-CELERY_IMPORTS = ()
+CELERY_IMPORTS = (
+    'blueapps_example.test_celery.tasks',
+)
 
 # log level setting
 LOG_LEVEL = "INFO"
@@ -165,3 +172,9 @@ if locals().get("DISABLED_APPS"):
         locals()[_key] = tuple(
             [_item for _item in locals()[_key] if not _item.startswith(_app + ".")]
         )
+
+# 添加版本日志
+INSTALLED_APPS += (
+    'version_log',
+)
+
